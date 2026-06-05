@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thinkal — Changing Periods. Reducing Waste. Creating Dignity.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Mukta:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --maroon:#7A1530; --crimson:#9E1B32; --red:#C0392B;
+  --indigo:#4B0082; --purpleD:#5B2A86; --purple:#6A3FB0; --violet:#9168C8; --violet2:#7A52C0; --slate:#6A5ACD;
+  --peri:#AEA9E0; --lav:#C3B2E4; --lav2:#DCD0EF; --lav3:#ECE6F6;
+  --paper:#F7F4ED; --paper2:#EFEADF; --white:#FFFFFF;
+  --ink:#2A2233; --ink2:#3A3048;
+  --f:'Mukta', system-ui, sans-serif;
+  --d:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --hand:'Mukta', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--paper);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+.banner h2,.origin h3,.why-circles h2,.howto-head h2,.faq h2,
+.knowmore h2,.impact-intro h1,.stories h1,.split h3,.story h3,.partners h3{
+  font-family:var(--d)!important;letter-spacing:0!important;font-weight:600!important}
+.brand{font-family:var(--f)!important;font-weight:800!important;font-size:1.4rem!important;display:flex;align-items:center;gap:7px;letter-spacing:-.5px}
+.brand-moon{width:28px;height:26px;flex:0 0 auto}
+.kicker{font-weight:600;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;opacity:.75}
+
+/* ---------- NAV ---------- */
+nav{position:sticky;top:0;z-index:120;background:var(--paper);display:flex;align-items:center;gap:6px;
+  padding:15px 32px;border-bottom:1px solid var(--ink)}
+.brand{font-weight:800;font-size:1.4rem;color:var(--indigo);letter-spacing:-.5px;margin-right:auto;cursor:pointer}
+.nav-group{display:flex;align-items:center;gap:26px}
+.nav-link{font-weight:600;color:var(--ink);cursor:pointer;position:relative;font-size:.92rem;padding:6px 12px;
+  background:none;border:none;font-family:var(--f);letter-spacing:.2px}
+.nav-link::after{content:"";position:absolute;inset:-3px -10px;border:1.8px solid var(--crimson);border-radius:50%;
+  opacity:0;transform:scale(.7) rotate(-4deg);transition:.32s ease}
+.nav-link.active::after{opacity:1;transform:scale(1) rotate(-3deg)}
+.nav-link.active{color:var(--indigo)}
+.nav-link:hover{color:var(--violet)}
+.lang{font-weight:700;color:var(--ink);margin-left:10px;font-size:.82rem}
+.globe{width:20px;height:20px;margin-left:8px;stroke:var(--ink);fill:none;stroke-width:1.6}
+
+.page{display:none;animation:fade .5s ease}
+.page.show{display:block}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:94vh;min-height:660px;background:var(--paper);overflow:hidden;
+  transition:background .9s ease;display:flex;align-items:center;justify-content:center}
+.hero.dark{background:var(--maroon)}
+.padfill{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.padfill .pf{position:absolute;opacity:0;transition:opacity .5s ease}
+.padfill .pf svg{width:100%;height:100%;display:block}
+
+.fact{position:absolute;left:8vw;top:30%;transform:translateY(-50%);z-index:4;opacity:0;transition:opacity .55s ease;max-width:52vw}
+.fact.center{left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;max-width:92vw}
+.fact.on{opacity:1}
+.fbig{font-family:var(--d);font-weight:600;font-size:clamp(4.5rem,15vw,11rem);line-height:.86;color:var(--purple);letter-spacing:-2px}
+.fcap{font-family:var(--d);font-weight:500;font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.12;color:var(--ink);margin-top:8px;letter-spacing:0}
+.fact.lighttext .fbig{color:var(--paper)}
+.fact.lighttext .fcap{color:var(--lav2)}
+
+.seesaw{position:absolute;left:0;right:0;bottom:5vh;height:58vh;z-index:3;overflow:hidden;opacity:0;transition:opacity .6s ease;pointer-events:none}
+.seesaw.on{opacity:1}
+.seesaw svg{width:min(1100px,94vw);height:100%;display:block;margin:0 auto}
+#ssPan{transform-box:fill-box;transform-origin:16% 64%;transition:transform 1.3s cubic-bezier(.4,0,.2,1)}
+.ss-plank{fill:var(--purple)}
+.ss-fulcrum{fill:var(--ink)}
+.ss-crescent{fill:var(--lav)}
+.ss-girl circle{fill:var(--violet)}
+.ss-girl path{fill:var(--violet)}
+#plankG{transition:transform 1s cubic-bezier(.4,0,.2,1)}
+.pad-bit{fill:none;stroke:var(--crimson);stroke-width:4;stroke-linecap:round}
+
+.htag{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;opacity:0;transition:opacity .7s ease;pointer-events:none}
+.htag.on{opacity:1}
+.htag .t1{font-family:var(--d);font-weight:600;font-size:clamp(4rem,12vw,9rem);color:var(--purple);line-height:.92;letter-spacing:-1px}
+.htag .t2{font-family:var(--d);font-style:italic;font-weight:500;font-size:clamp(1.9rem,5vw,3.4rem);color:var(--violet);margin-top:6px;letter-spacing:0}
+
+.growdot{position:absolute;border-radius:50%;background:var(--purple);z-index:7;opacity:0;pointer-events:none;width:30px;height:30px;left:0;top:0;overflow:hidden}
+.grow-logo{position:absolute;left:50%;top:50%;width:64%;height:64%;transform:translate(-50%,-50%) scale(.55);opacity:0;
+  transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.3,1.1)}
+.grow-logo.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+.replay{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:var(--purple);color:var(--paper);
+  border:none;padding:10px 24px;border-radius:6px;font-family:var(--f);font-weight:700;cursor:pointer;font-size:.78rem;
+  letter-spacing:1.5px;text-transform:uppercase;display:flex;gap:8px;align-items:center;z-index:9;transition:.18s}
+.replay:hover{background:var(--violet)}
+.hero.dark .replay{background:var(--paper);color:var(--maroon)}
+.scrolldown{position:absolute;bottom:26px;right:18px;color:var(--purple);font-weight:600;font-size:.72rem;
+  letter-spacing:2px;text-transform:uppercase;opacity:.6;z-index:9;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+/* ---------- generic section ---------- */
+.sec{padding:96px 7vw}
+.sec h2,.sec h1{font-weight:800;letter-spacing:-1.5px;line-height:.98}
+
+/* ---------- BANNER ---------- */
+.banner{background:var(--paper);color:var(--purple);padding:130px 7vw 120px}
+.banner h2{font-size:clamp(2.6rem,6.5vw,5rem);line-height:1.02;max-width:17ch;color:var(--purple);opacity:.05;transform:translateY(70px)}
+.banner .sub{font-weight:700;font-size:clamp(1rem,1.9vw,1.35rem);margin-top:30px;color:var(--violet);display:flex;gap:26px;flex-wrap:wrap}
+.banner .sub b{color:var(--crimson);font-weight:800}
+.rule-lines{display:flex;gap:5px;margin-top:34px}
+.rule-lines i{width:2px;height:30px;background:var(--lav);opacity:.5}
+
+/* ---------- ORIGIN (more space) ---------- */
+.origin{background:var(--paper);color:var(--ink);padding:120px 7vw 130px;min-height:96vh;display:flex;flex-direction:column;justify-content:center}
+.origin h3{font-size:clamp(2.1rem,4.2vw,3.2rem);color:var(--purple);line-height:1;font-weight:700}
+.origin h3 .accent{color:inherit}
+.anim-slot{margin-top:40px;border:1.5px solid var(--ink);border-radius:6px;min-height:68vh;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;padding:48px 30px;background:var(--white)}
+.anim-tag{font-family:var(--f);font-weight:700;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;
+  color:var(--crimson);border:1.5px solid var(--crimson);border-radius:30px;padding:7px 18px}
+.anim-slot p{font-weight:500;color:var(--violet);max-width:46ch;font-size:1.05rem}
+
+/* ---------- PARTNERS ---------- */
+.partners{background:var(--paper);padding:96px 0;cursor:pointer;user-select:none;overflow:hidden}
+.partners h3{font-size:clamp(2.4rem,5vw,3.6rem);color:var(--indigo);margin:0 7vw 34px}
+.pmarquee{overflow:hidden;width:100%}
+.ptrack{display:flex;gap:80px;width:max-content;transform:translateX(-50%);padding:0 40px}
+.ptrack.run, .partners:hover .ptrack{animation:marq 22s linear infinite}
+@keyframes marq{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.pc{width:220px;height:220px;flex:0 0 auto;border-radius:50%;border:1.5px solid var(--violet);display:flex;
+  align-items:center;justify-content:center;color:var(--violet);font-weight:600;font-size:1rem;background:var(--paper);transition:.3s}
+.pc:hover{background:var(--lav3)}
+
+/* ---------- FOOTER ---------- */
+.site-footer{background:var(--ink);color:var(--lav);padding:60px 7vw 36px}
+.f-social{display:flex;gap:16px;margin-bottom:30px}
+.f-social span{width:42px;height:42px;border-radius:50%;border:1px solid var(--lav);display:flex;align-items:center;
+  justify-content:center;cursor:pointer;transition:.2s;font-size:.95rem}
+.f-social span:hover{background:var(--crimson);border-color:var(--crimson);color:#fff}
+.f-grid{display:flex;flex-wrap:wrap;gap:40px;justify-content:space-between;align-items:flex-end}
+.f-col h5{font-weight:800;font-size:1.05rem;color:var(--white);margin-bottom:8px}
+.f-col,.f-col a{color:var(--lav);font-weight:400;text-decoration:none;font-size:.95rem;line-height:1.6}
+.f-bottom{margin-top:32px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.14);
+  padding-top:16px;font-size:.78rem;flex-wrap:wrap;gap:10px;color:var(--lav)}
+.f-logo{font-weight:800;font-size:1.2rem;color:var(--white);letter-spacing:-.5px}
+
+/* ---------- WHY rings ---------- */
+.why-circles{background:var(--paper);padding:96px 6vw 104px}
+.why-circles .kicker{color:var(--violet);text-align:center;display:block}
+.why-circles h2{color:var(--purple);font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;text-align:center;margin:12px 0 8px;letter-spacing:-1.5px}
+.why-circles p.lead{text-align:center;color:var(--violet);font-weight:500;margin-bottom:60px}
+.ring-row{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+.ring-card{flex:1 1 200px;max-width:250px;text-align:center;opacity:0;transform:translateY(30px);transition:.7s ease}
+.ring-card.in{opacity:1;transform:none}
+.ring-card h4{font-size:1.25rem;font-weight:700;color:var(--purple);line-height:1.05}
+.ring-card p{color:var(--violet);font-weight:400;font-size:.9rem;margin-top:10px;padding:0 8px}
+.moonbox{width:150px;margin:0 auto 22px}
+.mphase{width:150px;height:150px;display:block;transform:scale(.6);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.3,1.1),opacity .7s ease}
+.ring-card.in .mphase{transform:scale(1);opacity:1}
+
+/* ---------- HOWTO parallax ---------- */
+.howto{background:var(--crimson);color:var(--paper);height:320vh;position:relative}
+.howto-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column}
+.howto-head{padding:70px 7vw 0}
+.howto-head .kicker{color:rgba(255,255,255,.7)}
+.howto-head h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;margin-top:10px;letter-spacing:-1.5px}
+.howto-body{flex:1;position:relative;display:flex;align-items:center;justify-content:center}
+.cup{position:absolute;left:50%;top:50%;width:min(440px,72vw);height:340px;transform:translate(-50%,-50%);opacity:0;transition:opacity .5s ease}
+.cup.active{opacity:1}
+.cup svg{width:100%;height:100%}
+.ht{position:absolute;left:50%;bottom:14%;transform:translateX(-50%) translateY(16px);width:min(560px,86vw);text-align:center;opacity:0;transition:.5s ease}
+.ht.active{opacity:1;transform:translateX(-50%) translateY(0)}
+.ht .n{font-weight:800;font-size:1rem;color:var(--lav);letter-spacing:2px}
+.ht h4{font-size:2rem;font-weight:800;margin:6px 0;letter-spacing:-1px}
+.ht p{color:#f0d6da;font-weight:500;font-size:1.05rem}
+.howto-prog{position:absolute;right:7vw;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px}
+.howto-prog i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--paper);opacity:.45;transition:.3s}
+.howto-prog i.on{opacity:1;background:var(--paper)}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--paper);padding:96px 6vw}
+.faq h2{font-size:clamp(2.4rem,6vw,3.6rem);font-weight:800;color:var(--indigo);margin-bottom:36px;text-align:center;letter-spacing:-1.5px}
+.faq-box{background:var(--indigo);border-radius:8px;padding:8px 20px;max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.18)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:22px 4px;display:flex;justify-content:space-between;
+  align-items:center;cursor:pointer;font-family:var(--f);font-weight:700;font-size:1.05rem;color:var(--white)}
+.faq-q .arrow{transition:transform .3s;font-size:1rem;color:var(--lav)}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--lav);font-weight:400;padding:0 4px}
+.faq-item.open .faq-a{max-height:220px;padding:0 4px 22px}
+
+/* ---------- KNOWMORE ---------- */
+.knowmore{background:var(--violet);padding:96px 6vw;display:flex;gap:6vw;align-items:center;flex-wrap:wrap}
+.knowmore .txt{flex:1 1 260px}
+.knowmore h2{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:800;color:var(--white);line-height:1;letter-spacing:-1.5px}
+.knowmore p{color:var(--lav2);font-weight:500;margin-top:14px;font-size:1.02rem}
+.knowmore .phones{display:flex;gap:24px;flex:1 1 300px;justify-content:center}
+.phone{width:150px;height:300px;border:2px solid var(--lav);border-radius:24px;background:rgba(255,255,255,.06);display:flex;
+  align-items:center;justify-content:center;color:var(--lav2);font-weight:600;text-align:center;font-size:.82rem;transition:.4s}
+.phone:hover{transform:translateY(-10px)}
+
+/* ---------- IMPACT ---------- */
+.impact-intro{background:var(--paper);padding:96px 7vw 64px;text-align:center}
+.impact-intro h1{font-size:clamp(3rem,8vw,5.5rem);color:var(--purple)}
+.impact-intro p{color:var(--violet);font-weight:500;max-width:620px;margin:18px auto 0;font-size:1.05rem}
+.map-space{margin:44px auto 0;max-width:1100px;min-height:60vh;border:1.5px solid var(--violet);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;color:var(--violet);font-weight:600;background:rgba(145,104,200,.06);text-align:center;padding:20px}
+.field{background:var(--maroon);color:var(--paper);padding:90px 6vw 100px;display:flex;gap:6vw;align-items:center;justify-content:center;flex-wrap:wrap}
+.field-label{flex:0 0 auto;max-width:min(380px,82vw)}
+.field-label .kicker{color:var(--lav);display:block;margin-bottom:12px}
+.field-label h2{font-family:var(--d);font-weight:600;font-size:clamp(2.6rem,5.2vw,4rem);color:var(--paper);line-height:1;letter-spacing:0}
+.field-frame{flex:0 0 auto;width:min(440px,90vw);height:300px;border:5px solid var(--paper);border-radius:3px;overflow:hidden;position:relative;background:var(--ink)}
+.field-strip{display:flex;flex-direction:column;animation:fieldScroll 6s linear infinite}
+.field-frame:hover .field-strip{animation-play-state:paused}
+.field-strip img{width:100%;height:300px;object-fit:cover;display:block}
+@keyframes fieldScroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+
+/* ---------- STORIES ---------- */
+.stories{background:var(--paper);min-height:70vh;padding:96px 6vw}
+.stories h1{font-size:clamp(3rem,7vw,5rem);font-weight:800;color:var(--purple);margin-bottom:8px;letter-spacing:-2px}
+.stories .lead{color:var(--violet);font-weight:500;margin-bottom:56px;font-size:1.02rem}
+.dash{display:flex;flex-wrap:wrap;gap:40px 30px;justify-content:center}
+.story-item{width:260px;display:flex;flex-direction:column;align-items:center}
+.story{position:relative;width:260px;height:260px;border-radius:50%;overflow:hidden;--tint:var(--violet);
+  cursor:pointer;background:var(--ink2);transition:transform .35s ease,box-shadow .35s ease}
+.story:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(42,34,51,.30)}
+.story .photo{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;transition:transform .5s ease}
+.story:hover .photo{transform:scale(1.06)}
+.story .veil{position:absolute;inset:0;z-index:1;background:var(--tint);opacity:0;transition:opacity .35s ease}
+.story:hover .veil{opacity:.82}
+.story .inner{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:13px;padding:26px;text-align:center;opacity:0;transition:opacity .3s ease}
+.story:hover .inner{opacity:1}
+.story .tag{background:rgba(255,255,255,.94);color:var(--purpleD);font-weight:700;font-size:.66rem;padding:5px 12px;
+  border-radius:20px;letter-spacing:.6px;text-transform:uppercase}
+.story .meta{display:flex;gap:7px;justify-content:center;flex-wrap:wrap}
+.story .chip{font-weight:700;font-size:.7rem;padding:5px 11px;border-radius:20px;letter-spacing:.3px;white-space:nowrap}
+.story .chip.read{background:var(--paper);color:var(--maroon)}
+.story .chip.date{background:#fff;color:var(--purpleD)}
+.story.alt{--tint:var(--crimson)}
+.story.alt2{--tint:var(--slate)}
+.story-title{margin-top:20px;font-family:var(--d);font-weight:600;font-size:1.25rem;color:var(--purple);
+  line-height:1.18;text-align:center;max-width:240px}
+
+/* ---------- CONTACT scattered ---------- */
+.choose{background:var(--indigo);color:var(--paper);position:relative;overflow:hidden;min-height:84vh;display:flex;align-items:center;justify-content:center}
+.scatter{position:absolute;inset:0;z-index:1}
+.sc-photo{position:absolute;border-radius:4px;overflow:hidden;border:3px solid var(--paper);box-shadow:0 12px 34px rgba(0,0,0,.4);transition:transform .45s ease}
+.sc-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.sc-photo:hover{transform:translateY(-10px) scale(1.04);z-index:5}
+.choose h1{position:relative;z-index:3;font-size:clamp(2rem,4.6vw,3.2rem);font-weight:700;letter-spacing:-1px;text-align:center;text-shadow:0 4px 30px rgba(20,12,40,.55)}
+.moon{position:absolute;z-index:2;top:7%;right:5%;width:150px;opacity:.92;pointer-events:none}
+
+/* ---------- CONTACT split ---------- */
+.contact-split{background:var(--paper);padding:72px 7vw}
+.split{display:flex;gap:0;align-items:stretch;flex-wrap:wrap}
+.split .half{flex:1 1 300px;padding:22px 44px}
+.split .divider{width:1px;background:var(--ink);align-self:stretch;min-height:120px;opacity:.4}
+.split h3{font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;color:var(--indigo);margin-bottom:16px;letter-spacing:-.8px}
+.split p{color:var(--violet);font-weight:500;margin-bottom:24px;font-size:.98rem}
+.pill-btn{background:var(--indigo);color:var(--paper);border:none;padding:13px 30px;border-radius:6px;font-family:var(--f);
+  font-weight:700;cursor:pointer;font-size:.92rem;letter-spacing:.4px;transition:.18s}
+.pill-btn:hover{background:var(--crimson)}
+
+/* ---------- CHANGE marquee ---------- */
+.change{background:var(--indigo);padding:60px 0;overflow:hidden}
+.cmarq{display:flex;width:max-content;white-space:nowrap;will-change:transform}
+.cmarq.l{animation:cmL 24s linear infinite}
+.cmarq.r{animation:cmR 30s linear infinite}
+.cmarq:nth-child(1) span{color:var(--paper)}
+.cmarq:nth-child(2) span{color:var(--crimson)}
+.cmarq:nth-child(3) span{color:var(--lav)}
+.cmarq span{font-weight:800;font-size:clamp(2rem,5.5vw,4rem);line-height:1.12;letter-spacing:-1.5px}
+@keyframes cmL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes cmR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+@media(max-width:720px){
+  nav{flex-wrap:wrap;gap:8px;padding:12px 16px}.nav-group{gap:14px}
+  .word{font-size:1rem!important}
+  .moon{width:100px;top:3%;right:3%}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="moonLogo" viewBox="0 0 220 200">
+  <circle cx="110" cy="84" r="68" fill="var(--lav2)"/>
+  <path d="M148 24 a68 68 0 1 1 0 120 a50 68 0 1 0 0 -120 Z" fill="var(--lav)"/>
+  <g stroke="var(--purple)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="92" cy="74" r="22" fill="var(--lav3)"/>
+    <path d="M70 70 q-12 4 -16 20 q12 6 24 0" fill="var(--lav)"/>
+    <path d="M104 88 q40 4 46 30 q-34 18 -78 6 q-8 -24 10 -36 Z" fill="var(--lav3)"/>
+    <path d="M150 120 q14 4 22 -2" fill="none"/>
+    <path d="M86 70 q6 5 12 0" fill="none"/>
+  </g>
+</symbol></svg>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="brand" onclick="go('home')"><svg class="brand-moon" viewBox="0 0 220 200"><use href="#moonLogo"/></svg>Thinkal</div>
+  <div class="nav-group">
+    <button class="nav-link" data-p="home" onclick="go('home')">Home</button>
+    <button class="nav-link" data-p="why" onclick="go('why')">Why</button>
+  </div>
+  <div class="nav-group" style="margin-left:40px">
+    <button class="nav-link" data-p="impact" onclick="go('impact')">Impact</button>
+    <button class="nav-link" data-p="stories" onclick="go('stories')">Stories</button>
+    <button class="nav-link" data-p="contact" onclick="go('contact')">Contact</button>
+  </div>
+  <span class="lang">EN / MA</span>
+  <svg class="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
+</nav>
+
+<!-- ============ HOME ============ -->
+<section class="page" id="home">
+  <div class="hero" id="hero">
+    <div class="padfill" id="padFill"></div>
+
+    <div class="fact" id="f240"><div class="fbig">240</div><div class="fcap">pads are used by a single<br>person every year</div></div>
+    <div class="fact" id="fwaste"><div class="fbig">1,12,800</div><div class="fcap">tonnes of waste, every year</div></div>
+    <div class="fact center" id="f500"><div class="fcap">each one takes</div><div class="fbig">500</div><div class="fcap">years to decompose</div></div>
+
+    <div class="seesaw" id="seesaw">
+      <svg viewBox="0 0 1200 520" id="ssvg" preserveAspectRatio="xMidYMax meet">
+        <g id="ssPan">
+          <path class="ss-crescent" id="ssCres" d="M640 488 a52 52 0 1 1 0 -2 a40 52 0 1 0 0 2 Z"/>
+          <g id="plankG">
+            <rect x="90" y="352" width="1020" height="14" rx="7" class="ss-plank"/>
+            <g class="ss-girl" transform="translate(120,250)">
+              <circle cx="40" cy="34" r="30"/>
+              <path d="M22 60 q18 14 38 0 l8 64 q-28 14 -56 0 Z"/>
+              <path d="M26 122 l-12 30 M62 122 l12 28" stroke="var(--violet)" stroke-width="9" fill="none" stroke-linecap="round"/>
+            </g>
+            <g id="padPile"></g>
+          </g>
+          <polygon class="ss-fulcrum" points="600,352 556,452 644,452"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="htag" id="htag"><span class="t1">Th<span id="iSpot">i</span>nkal</span><span class="t2">changes that.</span></div>
+    <div class="growdot" id="growDot"><svg class="grow-logo" id="growLogo" viewBox="0 0 220 200"><use href="#moonLogo"/></svg></div>
+
+    <button class="replay" id="replay" onclick="runHero()">&#8635; replay</button>
+    <div class="scrolldown" id="scrollHint">scroll &#8595;</div>
+  </div>
+
+  <div class="banner">
+    <h2>Thinkal is the largest Indian menstrual initiative</h2>
+    <div class="sub"><b>Changing Periods.</b> <b>Reducing Waste.</b> <b>Creating Dignity.</b></div>
+  </div>
+
+  <div class="origin">
+    <h3>Our <span class="accent">Origin</span> Story</h3>
+    <div class="anim-slot">
+      <span class="anim-tag">2D animation</span>
+      <p>An animated origin story will live here &#8212; the 2018 Kerala floods, and how Thinkal began.</p>
+    </div>
+  </div>
+
+  <div class="partners" id="partners" onclick="toggleMarquee()">
+    <h3>Our Partners</h3>
+    <div class="pmarquee"><div class="ptrack" id="ptrack"></div></div>
+  </div>
+
+  <div class="footer-slot"></div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="page" id="why">
+  <div class="why-circles">
+    <h2>Why a menstrual cup?</h2>
+    <p class="lead">Scroll to see why thousands are making the switch.</p>
+    <div class="ring-row">
+      <div class="ring-card" data-off="0"><div class="moonbox"><svg class="mphase" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="var(--lav2)" stroke="none"/><path d="M60 14 A46 46 0 0 1 60 106 A30 46 0 0 0 60 14 Z" fill="var(--purple)"/></svg></div><h4>Eco-friendly</h4><p>Zero landfill waste, period after period.</p></div>
+      <div class="ring-card" data-off="0"><div class="moonbox"><svg class="mphase" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="var(--lav2)" stroke="none"/><path d="M60 14 A46 46 0 0 1 60 106 L60 14 Z" fill="var(--purple)"/></svg></div><h4>Body-safe silicone</h4><p>Medical-grade, BPA-free material.</p></div>
+      <div class="ring-card" data-off="0"><div class="moonbox"><svg class="mphase" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="var(--lav2)" stroke="none"/><path d="M60 14 A46 46 0 0 1 60 106 A30 46 0 0 1 60 14 Z" fill="var(--purple)"/></svg></div><h4>Cost effective</h4><p>One cup replaces thousands of pads.</p></div>
+      <div class="ring-card" data-off="0"><div class="moonbox"><svg class="mphase" viewBox="0 0 120 120"><circle cx="60" cy="60" r="46" fill="var(--purple)"/></svg></div><h4>Reusable for years</h4><p>Lasts up to 10 years with simple care.</p></div>
+    </div>
+  </div>
+
+  <div class="howto" id="howto">
+    <div class="howto-sticky">
+      <div class="howto-head"><h2>How to use a menstrual cup</h2></div>
+      <div class="howto-body" id="howtoBody">
+        <div class="cup" data-step="0"><svg viewBox="0 0 240 220"><path d="M120 24 a22 22 0 1 0 0 44 a17 22 0 1 1 0 -44 Z" fill="var(--paper)"/><g transform="translate(84,98) scale(1.2)" fill="none" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17 C9 12 51 12 51 17 L44 57 C44 67 16 67 16 57 Z"/><path d="M9 17 Q30 27 51 17"/><path d="M30 67 L30 77"/><path d="M30 17 C19 34 41 34 30 56"/></g></svg></div>
+        <div class="cup" data-step="1"><svg viewBox="0 0 240 220"><path d="M120 24 a22 22 0 1 0 0 44 a17 22 0 1 1 0 -44 Z" fill="var(--paper)"/><g transform="translate(84,98) scale(1.2) rotate(20 30 40)" fill="none" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17 C9 12 51 12 51 17 L44 57 C44 67 16 67 16 57 Z"/><path d="M9 17 Q30 27 51 17"/><path d="M30 67 L30 77"/><path d="M30 0 L30 11 M25 6 L30 11 L35 6"/></g></svg></div>
+        <div class="cup" data-step="2"><svg viewBox="0 0 240 220"><path d="M120 24 a22 22 0 1 0 0 44 a17 22 0 1 1 0 -44 Z" fill="var(--paper)"/><g transform="translate(84,98) scale(1.2)" stroke="var(--paper)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17 C9 12 51 12 51 17 L44 57 C44 67 16 67 16 57 Z" fill="none"/><path d="M9 17 Q30 27 51 17" fill="none"/><path d="M30 67 L30 77" fill="none"/><path d="M5 3 q-3 5 0 8 q3 -3 0 -8 Z" fill="var(--paper)" stroke="none"/><path d="M55 5 q-3 5 0 8 q3 -3 0 -8 Z" fill="var(--paper)" stroke="none"/><circle cx="30" cy="2" r="2.4" fill="var(--paper)" stroke="none"/></g></svg></div>
+        <div class="ht" data-step="0"><div class="n">01</div><h4>Fold</h4><p>Press the rim and fold the cup into a tight C or punch-down shape.</p></div>
+        <div class="ht" data-step="1"><div class="n">02</div><h4>Insert</h4><p>Relax, insert at a slight angle, then let it open to form a gentle seal.</p></div>
+        <div class="ht" data-step="2"><div class="n">03</div><h4>Remove &amp; rinse</h4><p>Pinch the base to release the seal, empty, rinse, and reuse.</p></div>
+        <div class="howto-prog"><i data-s="0"></i><i data-s="1"></i><i data-s="2"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq">
+    <h2>FAQ</h2>
+    <div class="faq-box" id="faqBox">
+      <div class="faq-item"><button class="faq-q">Is a menstrual cup safe to use? <span class="arrow">&#9662;</span></button><div class="faq-a"><p>Yes. Thinkal cups are made from medical-grade silicone and are completely body-safe when used and cleaned as directed.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How long can I wear it? <span class="arrow">&#9662;</span></button><div class="faq-a"><p>Up to 8&#8211;12 hours depending on your flow. Empty, rinse, and re-insert through the day.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How do I clean it? <span class="arrow">&#9662;</span></button><div class="faq-a"><p>Rinse with water during your cycle and boil it for 3&#8211;5 minutes between cycles to sterilise.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How long does one cup last? <span class="arrow">&#9662;</span></button><div class="faq-a"><p>With proper care, a single cup can last up to 10 years &#8212; replacing thousands of disposable products.</p></div></div>
+    </div>
+  </div>
+
+  <div class="knowmore">
+    <div class="txt"><h2>Want to know more?</h2><p>Download the Thinkal app for guides, reminders, tracking and community support.</p></div>
+    <div class="phones"><div class="phone">App Screen 1<br>(coming soon)</div><div class="phone">App Screen 2<br>(coming soon)</div></div>
+  </div>
+
+  <div class="footer-slot"></div>
+</section>
+
+<!-- ============ IMPACT ============ -->
+<section class="page" id="impact">
+  <div class="impact-intro">
+    
+    <h1>Our Impact</h1>
+    <p>Every cup placed is waste prevented and dignity restored. An interactive map of our reach is coming here.</p>
+    <div class="map-space" id="mapSpace">Map goes here &#8212; space reserved for the interactive impact map</div>
+  </div>
+  <div class="field">
+    <div class="field-label"><span class="kicker">Stories from the ground</span><h2>In the field</h2></div>
+    <div class="field-frame"><div class="field-strip" id="fieldStrip"></div></div>
+  </div>
+  <div class="footer-slot"></div>
+</section>
+
+<!-- ============ STORIES ============ -->
+<section class="page" id="stories">
+  <div class="stories">
+    
+    <h1>Stories</h1>
+    <p class="lead">Articles, field notes and voices from the Thinkal movement.</p>
+    <div class="dash" id="storyDash"></div>
+  </div>
+  <div class="footer-slot"></div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="page" id="contact">
+  <div class="choose" id="choose">
+    <div class="scatter" id="scatter"></div>
+    <div class="moon"><svg viewBox="0 0 200 200">
+      <path d="M138 24 a78 78 0 1 0 30 132 a60 60 0 1 1 -30 -132 Z" fill="none" stroke="var(--lav)" stroke-width="2.4"/>
+      <g fill="none" stroke="var(--lav)" stroke-width="2.2" stroke-linecap="round">
+        <circle cx="92" cy="120" r="8" fill="var(--lav)" stroke="none"/>
+        <path d="M84 128 q-14 6 -16 22 q18 6 34 -2"/><path d="M100 126 q16 4 18 20"/><path d="M70 150 q14 8 34 2"/>
+      </g>
+      <g fill="var(--lav)"><circle cx="150" cy="60" r="2"/><circle cx="166" cy="92" r="1.6"/><circle cx="150" cy="120" r="1.6"/></g>
+    </svg></div>
+    <h1>Choose better</h1>
+  </div>
+  <div class="contact-split">
+    <div class="split">
+      <div class="half"><h3>Be a Partner</h3><p>Bring Thinkal to your community, school or organisation.</p><button class="pill-btn">Become a partner &#8594;</button></div>
+      <div class="divider"></div>
+      <div class="half"><h3>Get to know more</h3><p>Learn how the initiative works and where we&#8217;re headed.</p><button class="pill-btn">Get to know us &#8594;</button></div>
+    </div>
+  </div>
+  <div class="change" id="change"></div>
+  <div class="footer-slot"></div>
+</section>
+
+<script>
+const byId=id=>document.getElementById(id);
+const raf2=()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));
+let heroTimer=null;
+const sleep=ms=>new Promise(r=>{heroTimer=setTimeout(r,ms)});
+const DOT=58;
+let H={};
+
+function go(p){
+  document.querySelectorAll('.page').forEach(s=>s.classList.toggle('show',s.id===p));
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active',l.dataset.p===p));
+  window.scrollTo(0,0);
+  if(p==='home'){ layoutHero(); runHero(); }
+  if(p==='why'){ resetRings(); setTimeout(onScroll,60); }
+}
+
+/* ---------- HERO layout ---------- */
+function layoutHero(){ /* see-saw hero is responsive via CSS; nothing to compute */ }
+
+/* ---------- HERO animation (see-saw → pads fill → tagline) ---------- */
+const easeIO=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+function cub(a,b,c,d,t){const m=1-t;return m*m*m*a+3*m*m*t*b+3*m*t*t*c+t*t*t*d;}
+function padSvg(x,y,r,scale){
+  return '<g transform="translate('+x+' '+y+') rotate('+r+') scale('+(scale||1)+')">'+
+         '<rect x="-34" y="-15" width="68" height="30" rx="15" fill="var(--crimson)"/>'+
+         '<path d="M-17 0 h34 M0 -9 v18" stroke="var(--paper)" stroke-width="3.4" stroke-linecap="round" fill="none"/></g>';
+}
+function padFillSvg(stroke){
+  return '<svg viewBox="0 0 60 28"><g fill="none" stroke="'+stroke+'" stroke-width="2.4" stroke-linecap="round">'+
+         '<rect x="6" y="5" width="48" height="18" rx="9"/><path d="M18 14 h24 M30 9 v10"/></g></svg>';
+}
+async function runHero(){
+  if(heroTimer)clearTimeout(heroTimer);
+  const hero=byId('hero'), f240=byId('f240'), fwaste=byId('fwaste'), f500=byId('f500'),
+        seesaw=byId('seesaw'), pan=byId('ssPan'), plank=byId('plankG'), pile=byId('padPile'),
+        htag=byId('htag'), growDot=byId('growDot'), padFill=byId('padFill'), iSpot=byId('iSpot');
+  // reset
+  hero.classList.remove('dark');
+  [f240,fwaste,f500,seesaw,htag].forEach(e=>e.classList.remove('on'));
+  f500.classList.remove('lighttext');
+  pan.style.transition='none'; pan.style.transform='scale(1.7)';   // zoomed onto the girl's end
+  plank.style.transition='none'; plank.setAttribute('transform','rotate(-6 600 360)');
+  pile.innerHTML=''; padFill.innerHTML='';
+  growDot.style.transition='none'; growDot.style.opacity='0';
+  await raf2(); await sleep(300);
+
+  // 1. one side only: girl on the see-saw, the other side off-screen
+  seesaw.classList.add('on');
+  await sleep(250);
+  f240.classList.add('on');
+  await sleep(1900);
+
+  // 2. reveal the other side (zoom out) — pads are stacked on the far end
+  f240.classList.remove('on');
+  pan.style.transition='transform 1.3s cubic-bezier(.4,0,.2,1)';
+  pan.style.transform='scale(1)';
+  // pre-stack pads on the right end as it comes into view
+  const stack=[
+    [995,332,-5],[1035,330,9],[963,328,-13],
+    [1012,310,4],[984,306,-9],[1040,304,13],
+    [1000,286,-3],[1023,282,15],[974,280,-15],
+    [1008,260,6],[994,256,-10],[1030,254,11]
+  ];
+  await sleep(450);
+  for(let i=0;i<stack.length;i++){
+    pile.insertAdjacentHTML('beforeend', padSvg(stack[i][0],stack[i][1],stack[i][2]));
+    const el=pile.lastElementChild; el.style.opacity='0';
+    el.animate([{opacity:0,transform:'translateY(-40px)'},{opacity:1,transform:'translateY(0)'}],{duration:300,fill:'forwards'});
+    plank.style.transition='transform .4s ease';
+    plank.setAttribute('transform','rotate('+(-6+ (i+1)*1.25)+' 600 360)');
+    await sleep(120);
+  }
+  fwaste.classList.add('on');
+  await sleep(1700);
+
+  // 3. the pads multiply and fill the whole screen — a dense field of pads
+  fwaste.classList.remove('on'); seesaw.classList.remove('on');
+  const cols=11, rows=7, N=cols*rows;
+  for(let i=0;i<N;i++){
+    const cx=((i%cols)+0.5)/cols*100, cy=(Math.floor(i/cols)+0.5)/rows*100;
+    const d=document.createElement('div'); d.className='pf';
+    const w=56+Math.random()*44;
+    d.style.width=w+'px'; d.style.height=(w*0.5)+'px';
+    d.style.left=(cx+(Math.random()*7-3.5))+'%';
+    d.style.top=(cy+(Math.random()*9-4.5))+'%';
+    d.style.transform='translate(-50%,-50%) rotate('+(Math.random()*64-32)+'deg)';
+    d.style.transitionDelay=(Math.random()*0.6)+'s';
+    d.innerHTML=padFillSvg('rgba(255,255,255,'+(0.5+Math.random()*0.35).toFixed(2)+')');
+    padFill.appendChild(d);
+  }
+  hero.classList.add('dark');
+  await raf2();
+  [...padFill.children].forEach(d=>d.style.opacity='1');
+  await sleep(900);
+
+  // 4. "each one takes 500 years to decompose" over the filled screen
+  f500.classList.add('lighttext'); f500.classList.add('on');
+  await sleep(2300);
+
+  // 5. back to off-white, pads clear
+  f500.classList.remove('on');
+  [...padFill.children].forEach(d=>d.style.opacity='0');
+  await sleep(450);
+  hero.classList.remove('dark');
+  await sleep(750);
+  padFill.innerHTML='';
+
+  // 6. "Thinkal changes that."
+  htag.classList.add('on');
+  await sleep(1500);
+
+  // 7. the dot of the i lifts off, curves left, grows into a big circle, then the logo appears
+  const hr=hero.getBoundingClientRect(), ir=iSpot.getBoundingClientRect();
+  const startX=ir.left-hr.left+ir.width/2, startY=ir.top-hr.top+ir.height*0.06;
+  const D0=30, growLogo=byId('growLogo');
+  growLogo.classList.remove('show');
+  growDot.style.transition='none';
+  growDot.style.width=D0+'px'; growDot.style.height=D0+'px';
+  growDot.style.left=(startX-D0/2)+'px'; growDot.style.top=(startY-D0/2)+'px';
+  growDot.style.opacity='1';
+  await raf2();
+  const endX=hr.width*0.30, endY=hr.height*0.5;
+  await new Promise(res=>{const st=performance.now(),dur=1100;
+    function fr(n){let r=Math.min(1,(n-st)/dur),t=easeIO(r);
+      const x=cub(startX,startX-hr.width*0.18,endX+120,endX,t), y=cub(startY,startY-90,endY-40,endY,t);
+      growDot.style.left=(x-D0/2)+'px'; growDot.style.top=(y-D0/2)+'px';
+      if(r<1)requestAnimationFrame(fr); else res();}
+    requestAnimationFrame(fr);});
+  htag.classList.remove('on');
+  const big=Math.min(hr.width,hr.height)*0.74;
+  growDot.style.transition='width 1s cubic-bezier(.3,.7,.3,1),height 1s cubic-bezier(.3,.7,.3,1),left 1s,top 1s';
+  growDot.style.width=big+'px'; growDot.style.height=big+'px';
+  growDot.style.left=(hr.width*0.5-big/2)+'px'; growDot.style.top=(hr.height*0.5-big/2)+'px';
+  await sleep(720);
+  growLogo.classList.add('show');
+}
+window.addEventListener('resize',()=>{});
+
+/* ---------- PARTNERS ---------- */
+function buildPartners(){ const t=byId('ptrack'); let h=''; for(let k=0;k<2;k++) for(let i=1;i<=5;i++) h+='<div class="pc">Partner '+i+'</div>'; t.innerHTML=h; }
+function toggleMarquee(){ byId('ptrack').classList.toggle('run'); }
+buildPartners();
+
+/* ---------- CHANGE marquee ---------- */
+function buildChange(){ const c=byId('change'); if(!c)return; const phrase='Be a part of the change';
+  const set=Array(6).fill('<span>'+phrase+'\u2003\u00b7\u2003</span>').join(''); const track=set+set;
+  c.innerHTML=['l','r','l'].map(d=>'<div class="cmarq '+d+'">'+track+'</div>').join(''); }
+buildChange();
+
+/* ---------- WHY rings ---------- */
+function resetRings(){ document.querySelectorAll('.ring-card').forEach(c=>c.classList.remove('in')); }
+const ringObs=new IntersectionObserver(es=>{es.forEach(e=>{ if(e.isIntersecting){ e.target.style.setProperty('--off',e.target.dataset.off); setTimeout(()=>e.target.classList.add('in'),120);} });},{threshold:.4});
+document.querySelectorAll('.ring-card').forEach((c,i)=>{c.style.transitionDelay=(i*0.12)+'s';c.style.setProperty('--off',c.dataset.off);ringObs.observe(c);});
+
+/* ---------- HOWTO scroll parallax ---------- */
+function setHowtoStep(step,local){
+  document.querySelectorAll('.cup').forEach(c=>{const s=+c.dataset.step;c.classList.toggle('active',s===step);});
+  document.querySelectorAll('.ht').forEach(t=>t.classList.toggle('active',+t.dataset.step===step));
+  document.querySelectorAll('.howto-prog i').forEach(i=>i.classList.toggle('on',+i.dataset.s===step));
+}
+function onScroll(){
+  const why=byId('why'); if(!why||!why.classList.contains('show'))return;
+  const h=byId('howto'); if(!h)return;
+  const r=h.getBoundingClientRect(); const total=h.offsetHeight-window.innerHeight;
+  let p=Math.min(0.999,Math.max(0,(-r.top)/total));
+  const step=Math.min(2,Math.floor(p*3)); const local=p*3-step;
+  setHowtoStep(step,local);
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+setHowtoStep(0,0.5);
+
+/* ---------- BANNER scroll-fill ---------- */
+function bannerReveal(){
+  const home=byId('home'); if(!home||!home.classList.contains('show'))return;
+  const b=document.querySelector('.banner h2'); if(!b)return;
+  const r=b.getBoundingClientRect();
+  let p=(window.innerHeight - r.top)/(window.innerHeight*0.55);
+  p=Math.max(0,Math.min(1,p));
+  b.style.opacity=(0.05+0.95*p).toFixed(3);
+  b.style.transform='translateY('+((1-p)*70).toFixed(1)+'px)';
+}
+window.addEventListener('scroll',bannerReveal,{passive:true});
+
+/* ---------- FAQ ---------- */
+document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',()=>q.parentElement.classList.toggle('open')));
+
+/* ---------- IMPACT — In the field strip ---------- */
+const fieldSeeds=['edu','dist','aware','train','college','rural'];
+function renderField(){ const s=byId('fieldStrip'); if(!s)return;
+  const one=fieldSeeds.map(seed=>'<img loading="lazy" src="https://picsum.photos/seed/thinkal-'+seed+'/600/600" alt="In the field">').join('');
+  s.innerHTML=one+one; }
+renderField();
+
+/* ---------- STORIES ---------- */
+const stories=[
+  {tag:'Field Note',t:'A first period without fear',m:'5 min read \u00b7 Mar 2026',cls:''},
+  {tag:'Research',t:'The 500-year problem with pads',m:'8 min read \u00b7 Feb 2026',cls:'alt'},
+  {tag:'Voices',t:'Why I made the switch',m:'4 min read \u00b7 Feb 2026',cls:'alt2'},
+  {tag:'Impact',t:'Inside our rural outreach',m:'6 min read \u00b7 Jan 2026',cls:''},
+  {tag:'Guide',t:'Caring for your cup',m:'3 min read \u00b7 Jan 2026',cls:'alt2'},
+  {tag:'Story',t:'From taboo to talk',m:'7 min read \u00b7 Dec 2025',cls:'alt'},
+];
+byId('storyDash').innerHTML=stories.map((s,i)=>{
+  const parts=s.m.split('\u00b7'); const read=(parts[0]||'').trim(); const date=(parts[1]||'').trim();
+  const img='https://picsum.photos/seed/thinkal-story'+i+'/520/520';
+  return '<div class="story-item">'
+    +'<div class="story '+s.cls+'">'
+      +'<div class="photo" style="background-image:url('+img+')"></div><div class="veil"></div>'
+      +'<div class="inner"><span class="tag">'+s.tag+'</span>'
+        +'<div class="meta"><span class="chip read">'+read+'</span><span class="chip date">'+date+'</span></div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="story-title">'+s.t+'</div>'
+  +'</div>';
+}).join('');
+
+/* ---------- CONTACT scattered (straight, bigger) ---------- */
+const scatterSpec=[
+  {l:3,t:6,w:150,h:190},{l:20,t:40,w:120,h:120},{l:7,t:66,w:185,h:135},
+  {l:34,t:8,w:160,h:120},{l:46,t:64,w:150,h:190},{l:60,t:6,w:120,h:155},
+  {l:72,t:34,w:185,h:135},{l:85,t:8,w:150,h:185},{l:80,t:66,w:135,h:135},
+  {l:33,t:78,w:175,h:120},{l:64,t:74,w:140,h:170}
+];
+function buildScatter(){ const sc=byId('scatter'); if(!sc)return;
+  sc.innerHTML=scatterSpec.map((p,i)=>'<div class="sc-photo" style="left:'+p.l+'%;top:'+p.t+'%;width:'+p.w+'px;height:'+p.h+'px">'+
+    '<img loading="lazy" src="https://picsum.photos/seed/thinkal-team'+i+'/'+p.w*2+'/'+p.h*2+'" alt=""></div>').join(''); }
+buildScatter();
+
+/* ---------- FOOTER ---------- */
+const FOOTER='<footer class="site-footer"><div class="f-social"><span>f</span><span>&#9678;</span><span>in</span></div>'+
+  '<div class="f-grid"><div class="f-col"><h5>Address</h5><p>Thinkal Foundation,<br>Kochi, Kerala, India</p></div>'+
+  '<div class="f-col"><h5>Mail</h5><a href="mailto:hello@thinkal.org">hello@thinkal.org</a></div>'+
+  '<div class="f-logo">Thinkal</div></div>'+
+  '<div class="f-bottom"><span>&#169; 2026 Thinkal</span><span>Terms of Use &#183; Privacy Policy</span></div></footer>';
+document.querySelectorAll('.footer-slot').forEach(f=>f.innerHTML=FOOTER);
+
+go('home');
+</script>
+</body>
+</html>
